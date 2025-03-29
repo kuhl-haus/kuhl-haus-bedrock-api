@@ -4,7 +4,7 @@ build-backend = "pdm.backend"
 
 [project]
 name = "kuhl-haus-bedrock-api"
-version = "0.2.3"
+version = "0.2.4"
 description = "OpenAI-compatible REST API using AWS Bedrock as a backend"
 authors = [
     { name = "Tom Pounders", email = "git@oldschool.engineer" },
@@ -17,8 +17,8 @@ classifiers = [
     "Programming Language :: Python"
 ]
 dependencies = [
-    "kuhl-haus-bedrock-app~=0.2.3",
-    "kuhl-haus-metrics~=0.2.2",
+    "kuhl-haus-bedrock-app==0.2.4",
+    "kuhl-haus-metrics==0.2.3",
     "uvicorn~=0.34.0",
     "fastapi~=0.115.11",
     "mangum~=0.19.0",

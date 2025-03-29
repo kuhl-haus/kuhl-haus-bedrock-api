@@ -5,7 +5,7 @@
 groups = ["default", "testing"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:db8588162039093770cf25593fda775f83e1e3364e9eefa1d1ee451d93c005ce"
+content_hash = "sha256:3f9b7e838ccf21fb176350133f28779272dda906f81ee80da136e4fce65235c3"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -373,7 +373,7 @@ files = [
 
 [[package]]
 name = "kuhl-haus-bedrock-app"
-version = "0.2.3"
+version = "0.2.4"
 requires_python = ">=3.12"
 summary = "Application layer abstraction for integrating with AWS bedrock APIs"
 groups = ["default"]
@@ -390,7 +390,7 @@ dependencies = [
     "importlib-metadata~=8.6.1",
     "iniconfig",
     "jmespath",
-    "kuhl-haus-metrics~=0.2.2",
+    "kuhl-haus-metrics==0.2.3",
     "marshmallow",
     "marshmallow-enum",
     "mypy-extensions",
@@ -409,8 +409,8 @@ dependencies = [
     "urllib3",
 ]
 files = [
-    {file = "kuhl_haus_bedrock_app-0.2.3-py3-none-any.whl", hash = "sha256:f71070a15f923afa04218e7d22324ddb0098a61964a71c804bcb970d3a5e8324"},
-    {file = "kuhl_haus_bedrock_app-0.2.3.tar.gz", hash = "sha256:44ad8eb799368eecba808a8e9fcce33f176e67351b637fe595bcfd344f3b01fa"},
+    {file = "kuhl_haus_bedrock_app-0.2.4-py3-none-any.whl", hash = "sha256:cf2c6373936190363a42f34d94aba75172160edd1ed970d08a1f42a25b760921"},
+    {file = "kuhl_haus_bedrock_app-0.2.4.tar.gz", hash = "sha256:a3336494777840b201dc079b715d0d6c51c496dd7583998c0fb7236e3cceda3b"},
 ]
 
 [[package]]
