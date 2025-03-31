@@ -17,6 +17,6 @@
 
 # kuhl-haus-bedrock-api
 
-Application layer abstraction for integrating with AWS bedrock APIs
+OpenAI-compatible REST API using AWS Bedrock as a backend
 
 ... more to come!
