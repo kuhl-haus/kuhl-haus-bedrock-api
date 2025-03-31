@@ -6,13 +6,13 @@
 -->
 
 
-[![License](https://img.shields.io/github/license/kuhl-haus/kuhl-haus-api)](https://github.com/kuhl-haus/kuhl-haus-api/blob/mainline/LICENSE.txt)
-[![PyPI](https://img.shields.io/pypi/v/kuhl-haus-api.svg)](https://pypi.org/project/kuhl-haus-api/)
-[![Build Status](https://github.com/kuhl-haus/kuhl-haus-api/actions/workflows/publish-to-pypi.yml/badge.svg)](https://github.com/kuhl-haus/kuhl-haus-api/actions/workflows/publish-to-pypi.yml)
-[![CodeQL](https://github.com/kuhl-haus/kuhl-haus-api/workflows/CodeQL/badge.svg)](https://github.com/kuhl-haus/kuhl-haus-api/workflows/CodeQL/)
-[![codecov](https://codecov.io/gh/kuhl-haus/kuhl-haus-api/branch/mainline/graph/badge.svg)](https://codecov.io/gh/kuhl-haus/kuhl-haus-api)
-[![GitHub issues](https://img.shields.io/github/issues/kuhl-haus/kuhl-haus-api)](https://github.com/kuhl-haus/kuhl-haus-api/issues)
-[![Downloads](https://static.pepy.tech/badge/kuhl-haus-api/month)](https://pepy.tech/project/kuhl-haus-api)
+[![License](https://img.shields.io/github/license/kuhl-haus/kuhl-haus-bedrock-api)](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/blob/mainline/LICENSE.txt)
+[![PyPI](https://img.shields.io/pypi/v/kuhl-haus-bedrock-api.svg)](https://pypi.org/project/kuhl-haus-bedrock-api/)
+[![Build Status](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/actions/workflows/publish-to-pypi.yml/badge.svg)](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/actions/workflows/publish-to-pypi.yml)
+[![CodeQL](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/workflows/CodeQL/badge.svg)](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/workflows/CodeQL/)
+[![codecov](https://codecov.io/gh/kuhl-haus/kuhl-haus-bedrock-api/branch/mainline/graph/badge.svg)](https://codecov.io/gh/kuhl-haus/kuhl-haus-bedrock-api)
+[![GitHub issues](https://img.shields.io/github/issues/kuhl-haus/kuhl-haus-bedrock-api)](https://github.com/kuhl-haus/kuhl-haus-bedrock-api/issues)
+[![Downloads](https://static.pepy.tech/badge/kuhl-haus-bedrock-api/month)](https://pepy.tech/project/kuhl-haus-bedrock-api)
 
 
 # kuhl-haus-bedrock-api
