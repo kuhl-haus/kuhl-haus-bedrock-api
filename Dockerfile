@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=python:3.12-slim
+ARG BASE_IMAGE=python:3.13-slim
 FROM ${BASE_IMAGE} AS builder
 
 WORKDIR /build
@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir pdm
 RUN pdm build
 
 # Application Layer
-FROM python:3.12-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 COPY --from=builder /build/dist/*.whl /tmp/
