@@ -47,6 +47,8 @@ testing = [
     "pytest~=8.3.5",
     "pytest-cov~=6.1.0",
     "pytest-asyncio~=0.26.0",
+    "httpx~=0.28.1",
+    "starlette~=0.46.1"
 ]
 
 # [project.scripts]
