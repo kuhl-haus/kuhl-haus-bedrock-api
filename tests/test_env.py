@@ -2,7 +2,7 @@ import os
 import pytest
 from unittest.mock import patch
 
-import env
+import kuhl_haus.bedrock.api.env as env
 
 
 @pytest.fixture
