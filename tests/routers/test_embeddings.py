@@ -1,11 +1,10 @@
-import pytest
-import pytest_asyncio
 from unittest.mock import Mock, patch
-from fastapi import HTTPException
+
+import pytest
+from kuhl_haus.bedrock.app.env import DEFAULT_EMBEDDING_MODEL
+from kuhl_haus.bedrock.app.schema import EmbeddingsRequest, EmbeddingsResponse
 
 from kuhl_haus.bedrock.api.routers.embeddings import embeddings
-from kuhl_haus.bedrock.app.schema import EmbeddingsRequest, EmbeddingsResponse
-from kuhl_haus.bedrock.app.env import DEFAULT_EMBEDDING_MODEL
 
 
 @pytest.fixture

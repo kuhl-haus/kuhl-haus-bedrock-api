@@ -1,11 +1,11 @@
-import pytest
-import pytest_asyncio
 from unittest.mock import Mock, patch
+
+import pytest
 from fastapi.responses import StreamingResponse
+from kuhl_haus.bedrock.app.env import DEFAULT_MODEL
+from kuhl_haus.bedrock.app.schema import ChatRequest, ChatResponse
 
 from kuhl_haus.bedrock.api.routers.chat import chat_completions
-from kuhl_haus.bedrock.app.schema import ChatRequest, ChatResponse
-from kuhl_haus.bedrock.app.env import DEFAULT_MODEL
 
 
 @pytest.fixture
