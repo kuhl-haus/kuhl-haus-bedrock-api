@@ -1,7 +1,7 @@
-import pytest
 from unittest.mock import patch, MagicMock
+
+import pytest
 from fastapi import HTTPException
-from fastapi.testclient import TestClient
 
 
 # Use patch to mock the module import
