@@ -8,27 +8,30 @@ from fastapi.testclient import TestClient
 @pytest.fixture
 def models_router():
     """Import the router after mocking AWS services"""
-    with patch('kuhl_haus.bedrock.app.bedrock.BedrockModel') as mock_model_class:
-        # Set up the mock model instance
-        mock_model = MagicMock()
-        mock_model.list_models.return_value = [
-            "anthropic.claude-3-sonnet-20240229-v1:0",
-            "anthropic.claude-3-haiku-20240307-v1:0",
-            "amazon.titan-text-express-v1"
-        ]
-        mock_model_class.return_value = mock_model
+    with patch("kuhl_haus.bedrock.api.routers.model.api_key_auth") as patched_api_key_auth:
+        api_auth = MagicMock()
+        patched_api_key_auth.return_value = api_auth
+        with patch('kuhl_haus.bedrock.api.routers.model.BedrockModel') as mock_model_class:
+            # Set up the mock model instance
+            mock_model = MagicMock()
+            mock_model.list_models.return_value = [
+                "anthropic.claude-3-sonnet-20240229-v1:0",
+                "anthropic.claude-3-haiku-20240307-v1:0",
+                "amazon.titan-text-express-v1"
+            ]
+            mock_model_class.return_value = mock_model
 
-        # Now import the module
-        from kuhl_haus.bedrock.api.routers import model
+            # Now import the module
+            from kuhl_haus.bedrock.api.routers import model
 
-        # Replace the router's model with our mock
-        original_model = model.chat_model
-        model.chat_model = mock_model
+            # Replace the router's model with our mock
+            original_model = model.chat_model
+            model.chat_model = mock_model
 
-        yield model
+            yield model
 
-        # Restore original
-        model.chat_model = original_model
+            # Restore original
+            model.chat_model = original_model
 
 
 @pytest.mark.asyncio

@@ -1,4 +1,4 @@
-from unittest.mock import Mock, patch
+from unittest.mock import Mock, MagicMock, patch
 
 import pytest
 from fastapi.responses import StreamingResponse
@@ -23,9 +23,12 @@ def mock_chat_request():
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_non_streaming(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_non_streaming(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test the chat_completions endpoint with non-streaming request."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
     mock_response = Mock(spec=ChatResponse)
     mock_model.chat.return_value = mock_response
@@ -45,9 +48,12 @@ async def test_chat_completions_non_streaming(patched_bedrock_model, mock_chat_r
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_streaming(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_streaming(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test the chat_completions endpoint with streaming request."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_chat_request.stream = True
     mock_model = Mock()
     mock_stream_generator = (chunk for chunk in ["Hello", " there", "!"])
@@ -69,9 +75,12 @@ async def test_chat_completions_streaming(patched_bedrock_model, mock_chat_reque
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_gpt_model_replacement(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_gpt_model_replacement(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test that GPT models are replaced with the default model."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_chat_request.model = "gpt-4"
     mock_model = Mock()
     mock_response = Mock(spec=ChatResponse)
@@ -89,9 +98,12 @@ async def test_chat_completions_gpt_model_replacement(patched_bedrock_model, moc
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_validation_failure(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_validation_failure(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test that validation errors from the model are propagated."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
     validation_error = ValueError("Unsupported model")
     mock_model.validate.side_effect = validation_error
@@ -108,9 +120,12 @@ async def test_chat_completions_validation_failure(patched_bedrock_model, mock_c
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_chat_error(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_chat_error(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test handling of errors during chat generation."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
     chat_error = RuntimeError("Chat generation failed")
     mock_model.validate.return_value = None
@@ -128,9 +143,12 @@ async def test_chat_completions_chat_error(patched_bedrock_model, mock_chat_requ
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
-async def test_chat_completions_stream_error(patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_chat_completions_stream_error(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test handling of errors during stream generation setup."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_chat_request.stream = True
     mock_model = Mock()
     stream_error = RuntimeError("Stream setup failed")

@@ -1,4 +1,4 @@
-from unittest.mock import Mock, patch
+from unittest.mock import Mock, MagicMock, patch
 
 import pytest
 from kuhl_haus.bedrock.app.env import DEFAULT_EMBEDDING_MODEL
@@ -18,9 +18,12 @@ def mock_embeddings_request():
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_successful(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_successful(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test successful embedding generation."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
     mock_response = Mock(spec=EmbeddingsResponse)
     mock_model.embed.return_value = mock_response
@@ -37,9 +40,12 @@ async def test_embeddings_successful(patched_get_embeddings_model, mock_embeddin
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_openai_model_replacement(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_openai_model_replacement(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test that OpenAI embedding models are replaced with the default model."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_embeddings_request.model = "text-embedding-ada-002"
     mock_model = Mock()
     mock_response = Mock(spec=EmbeddingsResponse)
@@ -57,9 +63,12 @@ async def test_embeddings_openai_model_replacement(patched_get_embeddings_model,
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_unsupported_model(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_unsupported_model(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test handling of unsupported embedding models."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     model_error = ValueError("Unsupported embedding model")
     patched_get_embeddings_model.side_effect = model_error
 
@@ -73,9 +82,12 @@ async def test_embeddings_unsupported_model(patched_get_embeddings_model, mock_e
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_generation_error(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_generation_error(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test handling of errors during embedding generation."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
     embed_error = RuntimeError("Embedding generation failed")
     mock_model.embed.side_effect = embed_error
@@ -92,9 +104,12 @@ async def test_embeddings_generation_error(patched_get_embeddings_model, mock_em
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_case_insensitive_model_replacement(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_case_insensitive_model_replacement(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test that model replacement is case-insensitive."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_embeddings_request.model = "TEXT-EMBEDDING-ada-002"
     mock_model = Mock()
     mock_response = Mock(spec=EmbeddingsResponse)
@@ -112,9 +127,12 @@ async def test_embeddings_case_insensitive_model_replacement(patched_get_embeddi
 
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.embeddings.get_embeddings_model")
-async def test_embeddings_with_multiple_inputs(patched_get_embeddings_model, mock_embeddings_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
+async def test_embeddings_with_multiple_inputs(patched_api_key_auth, patched_get_embeddings_model, mock_embeddings_request):
     """Test embedding generation with multiple input strings."""
     # Arrange
+    api_auth = MagicMock()
+    patched_api_key_auth.return_value = api_auth
     mock_embeddings_request.input = ["First text", "Second text", "Third text"]
     mock_model = Mock()
     mock_response = Mock(spec=EmbeddingsResponse)
