@@ -1,6 +1,7 @@
 from unittest.mock import Mock, MagicMock, patch
 
 import pytest
+from fastapi import Depends
 from fastapi.responses import StreamingResponse
 from kuhl_haus.bedrock.app.env import DEFAULT_MODEL
 from kuhl_haus.bedrock.app.schema import ChatRequest, ChatResponse
@@ -24,9 +25,12 @@ def mock_chat_request():
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_non_streaming(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_non_streaming(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test the chat_completions endpoint with non-streaming request."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
@@ -49,9 +53,12 @@ async def test_chat_completions_non_streaming(patched_api_key_auth, patched_bedr
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_streaming(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_streaming(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test the chat_completions endpoint with streaming request."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_chat_request.stream = True
@@ -76,9 +83,12 @@ async def test_chat_completions_streaming(patched_api_key_auth, patched_bedrock_
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_gpt_model_replacement(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_gpt_model_replacement(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test that GPT models are replaced with the default model."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_chat_request.model = "gpt-4"
@@ -99,9 +109,12 @@ async def test_chat_completions_gpt_model_replacement(patched_api_key_auth, patc
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_validation_failure(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_validation_failure(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test that validation errors from the model are propagated."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
@@ -121,9 +134,12 @@ async def test_chat_completions_validation_failure(patched_api_key_auth, patched
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_chat_error(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_chat_error(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test handling of errors during chat generation."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_model = Mock()
@@ -144,9 +160,12 @@ async def test_chat_completions_chat_error(patched_api_key_auth, patched_bedrock
 @pytest.mark.asyncio
 @patch("kuhl_haus.bedrock.api.routers.chat.BedrockModel")
 @patch("kuhl_haus.bedrock.api.routers.chat.api_key_auth")
-async def test_chat_completions_stream_error(patched_api_key_auth, patched_bedrock_model, mock_chat_request):
+@patch("kuhl_haus.bedrock.api.routers.chat.Depends")
+async def test_chat_completions_stream_error(fastapi_dep, patched_api_key_auth, patched_bedrock_model, mock_chat_request):
     """Test handling of errors during stream generation setup."""
     # Arrange
+    mock_dep = MagicMock(spec=Depends)
+    fastapi_dep.return_value = mock_dep
     api_auth = MagicMock()
     patched_api_key_auth.return_value = api_auth
     mock_chat_request.stream = True
