@@ -68,6 +68,8 @@ packages = {find = {where = ["src"], exclude = ["tests"]}}
 addopts = "--verbose"
 norecursedirs = ["dist", "build", ".tox"]
 testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
 
 [tool.devpi.upload]
 no_vcs = 1
