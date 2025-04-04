@@ -26,11 +26,13 @@ jobs:
       with:
         python-version: "3.12"
 
-    - name: Install PDM
-      run: pip install --no-cache-dir pdm
-
+#    - name: Install PDM
+#      run: pip install --no-cache-dir pdm
+#
+#    - name: Install dependencies
+#      run: pdm install -G testing
     - name: Install dependencies
-      run: pdm install -G testing
+      run: pip install -r requirements.txt
 
     - name: Run tests with coverage
       run: pdm run pytest --cov=kuhl_haus.bedrock.api --cov-report=html --cov-report=xml tests -v
