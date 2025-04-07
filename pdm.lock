@@ -405,61 +405,61 @@ files = [
 
 [[package]]
 name = "kuhl-haus-bedrock-app"
-version = "0.2.9"
+version = "0.2.10"
 requires_python = ">=3.12"
 summary = "Application layer abstraction for integrating with AWS bedrock APIs"
 groups = ["default"]
 dependencies = [
     "attrs",
-    "boto3~=1.37.26",
-    "botocore~=1.37.26",
+    "boto3",
+    "botocore",
     "colorama",
     "dataclasses",
     "dataclasses-json",
     "dnspython",
     "exceptiongroup",
-    "fastapi~=0.115.12",
-    "importlib-metadata~=8.6.1",
+    "fastapi",
+    "importlib-metadata",
     "iniconfig",
     "jmespath",
-    "kuhl-haus-metrics==0.2.6",
+    "kuhl-haus-metrics",
     "marshmallow",
     "marshmallow-enum",
     "mypy-extensions",
-    "numpy~=2.2.4",
+    "numpy",
     "packaging",
     "pluggy",
-    "pydantic~=2.11.1",
+    "pydantic",
     "python-dateutil",
-    "requests~=2.32.3",
+    "requests",
     "s3transfer",
     "six",
-    "tiktoken~=0.9.0",
+    "tiktoken",
     "tomli",
     "typing-extensions",
     "typing-inspect",
     "urllib3",
 ]
 files = [
-    {file = "kuhl_haus_bedrock_app-0.2.9-py3-none-any.whl", hash = "sha256:ef3f0922b3d50bfbf437cdf5f80b38a55f39735d4ad25ebb92fd6d0c14c5cced"},
-    {file = "kuhl_haus_bedrock_app-0.2.9.tar.gz", hash = "sha256:2bdb350890017229df1226461f0f7e4051482cbe1ca7c6810fea8f889d55f26c"},
+    {file = "kuhl_haus_bedrock_app-0.2.10-py3-none-any.whl", hash = "sha256:73dca298000dd6012ea20e493958bfa11d06ed2ccb965417a1cd117ab62640da"},
+    {file = "kuhl_haus_bedrock_app-0.2.10.tar.gz", hash = "sha256:7323cdff0698b7c1edd9e04f6bf9e72a3a2ed87caed3beadb52b5adbe94454bf"},
 ]
 
 [[package]]
 name = "kuhl-haus-metrics"
-version = "0.2.6"
+version = "0.2.8"
 requires_python = ">=3.12"
 summary = "Application logging and instrumentation"
 groups = ["default"]
 dependencies = [
-    "dataclasses-json~=0.6.7",
-    "fastapi~=0.115.12",
-    "importlib-metadata~=8.6.1",
-    "importlib-metadata~=8.6.1",
+    "dataclasses-json",
+    "fastapi",
+    "importlib-metadata",
+    "importlib-metadata",
 ]
 files = [
-    {file = "kuhl_haus_metrics-0.2.6-py3-none-any.whl", hash = "sha256:701f7f5dbbbef3c8f64576d6c810768124d74a5315599ecd15b1d583123e3b2a"},
-    {file = "kuhl_haus_metrics-0.2.6.tar.gz", hash = "sha256:21e3e4720525286bced7bd3390e706f953aba56225817b0ba0d2f887765aee3d"},
+    {file = "kuhl_haus_metrics-0.2.8-py3-none-any.whl", hash = "sha256:1d74bde878447fb52a8a606278cd8bb4a3beb02af26ce4938a69325f38e2c7fb"},
+    {file = "kuhl_haus_metrics-0.2.8.tar.gz", hash = "sha256:06edbb2571b0625db2f974f87335e57b7a890d778b1d52b7cbbf3adf32b8736e"},
 ]
 
 [[package]]
