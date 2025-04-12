@@ -4,7 +4,7 @@ build-backend = "pdm.backend"
 
 [project]
 name = "kuhl-haus-bedrock-api"
-version = "0.2.10"
+version = "0.2.11"
 description = "OpenAI-compatible REST API using AWS Bedrock as a backend"
 authors = [
     { name = "Tom Pounders", email = "git@oldschool.engineer" },
