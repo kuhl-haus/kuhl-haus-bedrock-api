@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Path
 
-from kuhl_haus.bedrock.app.auth import api_key_auth
+from kuhl_haus.bedrock.app.auth2 import api_key_auth
 from kuhl_haus.bedrock.app.bedrock import BedrockModel
 from kuhl_haus.bedrock.app.schema import Models, Model
 

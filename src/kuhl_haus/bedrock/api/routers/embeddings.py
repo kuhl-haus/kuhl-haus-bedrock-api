@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, Body
 
-from kuhl_haus.bedrock.app.auth import api_key_auth
+from kuhl_haus.bedrock.app.auth2 import api_key_auth
 from kuhl_haus.bedrock.app.bedrock import get_embeddings_model
 from kuhl_haus.bedrock.app.schema import EmbeddingsRequest, EmbeddingsResponse
 from kuhl_haus.bedrock.app.env import DEFAULT_EMBEDDING_MODEL
